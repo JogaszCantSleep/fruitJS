@@ -1,0 +1,311 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --fekete: black;
+    --feher: white;
+    --szurke: rgb(220, 220, 220);
+    --turkiz: rgb(2, 138, 158);
+    --sotet-turkiz: rgb(9, 81, 92);
+    --zold: rgb(73, 126, 23);
+    --kek: rgb(31, 83, 143);
+    --lila: rgb(97, 30, 114);
+    --piros: rgb(151, 23, 23);
+
+    --h1-color: var(--feher);
+    --h1-font-size: 2.5rem;
+    --h1-font-weight: bold;
+    --h1-font-variant: small-caps;
+
+    --h2-color: var(--sotet-turkiz);
+    --h2-font-size: 1.5rem;
+    --h2-font-weight: 800;
+    --h2-font-family: Heattenschweiler, sans-serif;
+    --h2-letter-spacing: 1.5px;
+    --h2-margin-top: 1rem;
+
+    --p-padding: 0.5rem 0;
+    --p-line-height: 1.5rem;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body{
+    padding-bottom: 5rem;
+}
+
+h1{
+    color: var(--h1-color);
+    font-size: var(--h1-font-size);
+    font-weight: var(--h1-font-weight);
+    font-variant: var(--h1-font-variant);
+}
+
+h2{
+    color: var(--h2-color);
+    font-size: var(--h2-font-size);
+    font-weight: var(--h2-font-weight);
+    font-family: var(--h2-font-family);
+    letter-spacing: var(--h2-letter-spacing);
+    margin-top: var(--h2-margin-top);
+}
+
+p{
+    padding: var(--p-padding);
+    line-height: var(--p-line-height);
+}
+
+input, select{
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--szurke);
+    outline: none;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+button{
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 2px solid var(--fekete);
+    margin: 1rem .5rem 1rem 0;
+    background-color: transparent;
+    color: transparent;
+}
+
+header {
+    height: 600px;
+    background-image: url(../img/banner_fruits.png);
+    background-size: cover;
+    background-position: center bottom;
+    position: relative;
+}
+
+header h1 {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 300px;
+    height: 300px;
+    background-color: color-mix(in srgb, var(--turkiz), transparent 75%);
+    text-shadow: 2px 2px 4px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 10px double var(--feher);
+}
+
+nav {
+    background-color: var(--turkiz);
+    color: var(--feher);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 60px;
+}
+
+nav .logo {
+    color: var(--feher);
+    text-decoration: none;
+    font-size: 1.4rem;
+    padding: 1.5rem;
+}
+
+nav .nav_menu .nav_element {
+    display: inline-block;
+}
+
+nav .nav_menu .nav_element a {
+    text-decoration: none;
+    border-top: 3px transparent double;
+    border-bottom: 3px transparent double;
+    padding: 1rem;
+    color: var(--szurke);
+}
+
+nav .nav_menu .nav_element a:hover {
+    color: var(--feher);
+    border-top: 3px var(--feher) double;
+    border-bottom: 3px var(--feher) double;
+    cursor: pointer;
+}
+
+main {
+    padding: 0 10%;
+    display: flex;
+    flex-direction: column;
+}
+
+main .ismerteto_container img {
+    display: none;
+}
+
+@media (min-width: 770px) {
+    main .ismerteto_container img {
+        width: 250px;
+        display: block;
+        float: right;
+    }
+}
+
+main .fogalmak_container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+main .fogalmak_container .dropdown_menu{
+    display: flex;
+    flex-direction: column;
+    outline: 1px dashed var(--turkiz);
+}
+
+main .fogalmak_container .dropdown_menu .dropdown_title{
+    background-color: var(--turkiz);
+    color: var(--feher);
+    font-style: italic;
+    font-weight: bold;
+    padding: 1rem 0.5rem;
+    list-style: "► ";
+}
+
+main .fogalmak_container .dropdown_menu .dropdown_title:hover{
+    background-color: var(--sotet-turkiz);
+    color: var(--szurke);
+    cursor: pointer;
+}
+
+main .fogalmak_container .dropdown_menu .dropdown_content{
+    display: none;
+    background-color: color-mix(in srgb, var(--turkiz), transparent 80%);
+    padding: 0 .5rem;
+}
+
+main .tapertek_container{
+    display: flex;
+    flex-direction: column;
+}
+
+main .tapertek_container table{
+    border-collapse: collapse;
+    align-self: center;
+    width: 100%;
+    margin: 0 auto;
+
+    @media (min-width: 768px) {
+        width: 75%;
+    }
+}
+
+main .tapertek_container table thead{
+    background-color: var(--fekete);
+    color: var(--feher);
+    font-style: bold;
+    text-align: left;
+}
+
+main .tapertek_container table tbody tr td:not(:nth-child(-n+2)){
+    text-align: center;
+}
+
+main .tapertek_container table tbody tr:nth-child(odd) {
+    background-color: var(--szurke);
+}
+
+td, th{
+    padding: 0.8rem 0.5rem;
+}
+
+main .kalkulator{
+    align-self: center;
+    width: 50%;
+}
+
+main .kalkulator .calculate{
+    color: var(--feher);
+    background-color: var(--fekete);
+}
+
+main .kalkulator .calculate:hover{
+    cursor: pointer;
+    color: var(--fekete);
+    background-color: var(--feher);
+}
+
+main .kalkulator .reset{
+    color: var(--fekete);
+    background-color: var(--feher);
+}
+
+main .kalkulator .reset:hover{
+    cursor: pointer;
+    color: var(--feher);
+    background-color: var(--fekete);
+}
+
+main .kalkulator #warning{
+    color: var(--piros);
+    border: 1px solid var(--piros);
+    background-color: rgba(255, 0, 0, 0.15);
+    border-radius: 5px;
+    padding: 1rem 1rem;
+    margin: 1rem 0;
+    display: none;
+}
+
+main .kalkulator .infos{
+    display: flex;
+    gap: 1rem;
+}
+
+main .kalkulator .infos .info{
+    border-radius: 10px;
+    border: 3px solid var(--feher);
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main .kalkulator .infos .info p{
+    color: var(--feher);
+}
+
+main .kalkulator .infos .info p:first-child{
+    font-weight: bold;
+}
+
+main .kalkulator .infos .info_fat{
+    background-color: var(--zold);
+    outline: 3px solid var(--zold);
+}
+
+main .kalkulator .infos .info_fiber {
+    background-color: var(--kek);
+    outline: 3px solid var(--kek);
+}
+
+main .kalkulator .infos .info_calory {
+    background-color: var(--turkiz);
+    outline: 3px solid var(--turkiz);
+}
+
+main .kalkulator .infos .info_protein {
+    background-color: var(--lila);
+    outline: 3px solid var(--lila);
+}
+
+main .kalkulator .infos .info_carbohydrate {
+    background-color: var(--piros);
+    outline: 3px solid var(--piros);
+}

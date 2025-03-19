@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="../fruitJS/forras/js/app.js"></script>
+    <script src="../fruitJS/forras/js/MainController.js"></script>
+    <link rel="stylesheet" href="../fruitJS/forras/css/style.css">
+    <title>Gyümölcsök</title>
+</head>
+<body ng-app="gyumolcsApp" ng-controller="MainController">
+    <header>
+        <h1>Gyümölcsök</h1>
+    </header>
+    <nav>
+        <a class="logo" href="../fruitJS/index.html">Ben</a>
+        <ul class="nav_menu">
+            <li class="nav_element"><a href="#fogalmak">Fogalmak</a></li>
+            <li class="nav_element"><a href="#tapertek">Tápérték- és kalóriatáblázat</a></li>
+            <li class="nav_element"><a href="#kalkulator">Kalkulátor</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="ismerteto_container" ng-repeat="i in ismerteto">
+            <img src="../fruitJS/forras/img/kiwi.png" alt="Kiwi">
+            <p ng-repeat="p in i.text">{{p}}</p>
+        </div>
+        <div id="fogalmak" class="fogalmak_container">
+            <h2>Fogalmak</h2>
+            <div class="dropdown_menu" ng-repeat="f in fogalmak">
+                <li class="dropdown_title" ng-click="dropDown($event)">{{f.title}}</li>
+                <div class="dropdown_content" id="dropDown">
+                    <p ng-repeat="p in f.text">{{p}}</p>
+                </div>
+            </div>
+        </div>
+        <div id="tapertek" class="tapertek_container">
+            <h2>Tápérték- és kalóriatáblázat</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Gyümölcs neve</th>
+                        <th>Kalória</th>
+                        <th>Zsír</th>
+                        <th>Szénhidrát</th>
+                        <th>Fehérje</th>
+                        <th>Rost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="gy in gyumolcsok">
+                        <td>{{gy.name}}</td>
+                        <td>{{gy.calory}} kcal</td>
+                        <td>{{gy.fat}} g</td>
+                        <td>{{gy.carbohydrate}} g</td>
+                        <td>{{gy.protein}} g</td>
+                        <td>{{gy.fiber}} g</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="kalkulator" class="kalkulator">
+            <h2>Kalkulátor</h2>
+            <p>Gyümölcs neve</p>
+            <select name="" id="">
+                <option value="">Válasszon egy gyümölcsöt!</option>
+                <option ng-repeat="gy in gyumolcsok" value="">{{gy.name}}</option>
+            </select>
+            <p>Mennyiség</p>
+            <input type="number" value="1" min="1">
+            <button ng-click="dropDown($scope)" class="calculate">Számítás</button>
+            <button class="reset">Visszaállítás</button>
+            <div id="warning">
+                Válasszon egy gyümölcsöt a lenyíló listából!
+            </div>
+            <div class="infos">
+                <div class="info info_fat">
+                    <p>Zsír</p>
+                </div>
+                <div class="info info_fiber">
+                    <p>Rost</p>
+                </div>
+                <div class="info info_calory">
+                    <p>Kalória</p>
+                </div>
+                <div class="info info_protein">
+                    <p>Fehérje</p>
+                </div>
+                <div class="info info_carbohydrate">
+                    <p>Szénhidrát</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
