@@ -87,7 +87,26 @@ app.controller('MainController', function($scope) {
         }
     ];
 
-    $scope.calculate = function($scope) {
-        if ()
+    $scope.calculate = function() {
+        document.getElementById('warning').style.display = 'none';
+        let isValid = false;
+        for (let i = 0; i < $scope.gyumolcsok.length; i++) {
+            if ($scope.gyumolcsok[i].name === $scope.selectedFruit) {
+                isValid = true;
+                break;
+            }
+        }
+        if (!isValid) {
+            document.getElementById('warning').style.display = 'block';
+        } else {
+            let selectedFruitObj = $scope.gyumolcsok.find(gy => gy.name === $scope.selectedFruit);
+            let quantity = document.querySelector('input[type="number"]').value || 1; // Default to 1 if no value is entered
+            $scope.calculatedFat = selectedFruitObj.fat * quantity;
+            $scope.calculatedFiber = selectedFruitObj.fiber * quantity;
+            $scope.calculatedCalory = selectedFruitObj.calory * quantity;
+            $scope.calculatedProtein = selectedFruitObj.protein * quantity;
+            $scope.calculatedCarbohydrate = selectedFruitObj.carbohydrate * quantity;
+        }
     };
+    
 });

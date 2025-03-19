@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script src="../fruitJS/forras/js/app.js"></script>
-    <script src="../fruitJS/forras/js/MainController.js"></script>
-    <link rel="stylesheet" href="../fruitJS/forras/css/style.css">
+    <script src="forras/js/app.js"></script>
+    <script src="forras/js/MainController.js"></script>
+    <link rel="stylesheet" href="forras/css/style.css">
     <title>Gyümölcsök</title>
 </head>
 <body ng-app="gyumolcsApp" ng-controller="MainController">
@@ -14,7 +14,7 @@
         <h1>Gyümölcsök</h1>
     </header>
     <nav>
-        <a class="logo" href="../fruitJS/index.html">Ben</a>
+        <a class="logo" href="index.html">Ben</a>
         <ul class="nav_menu">
             <li class="nav_element"><a href="#fogalmak">Fogalmak</a></li>
             <li class="nav_element"><a href="#tapertek">Tápérték- és kalóriatáblázat</a></li>
@@ -23,7 +23,7 @@
     </nav>
     <main>
         <div class="ismerteto_container" ng-repeat="i in ismerteto">
-            <img src="../fruitJS/forras/img/kiwi.png" alt="Kiwi">
+            <img src="forras/img/kiwi.png" alt="Kiwi">
             <p ng-repeat="p in i.text">{{p}}</p>
         </div>
         <div id="fogalmak" class="fogalmak_container">
@@ -63,32 +63,37 @@
         <div id="kalkulator" class="kalkulator">
             <h2>Kalkulátor</h2>
             <p>Gyümölcs neve</p>
-            <select name="" id="">
+            <select ng-model="selectedFruit" name="" id="">
                 <option value="">Válasszon egy gyümölcsöt!</option>
-                <option ng-repeat="gy in gyumolcsok" value="">{{gy.name}}</option>
+                <option ng-repeat="gy in gyumolcsok" value="{{gy.name}}">{{gy.name}}</option>
             </select>
             <p>Mennyiség</p>
-            <input type="number" value="1" min="1">
-            <button ng-click="dropDown($scope)" class="calculate">Számítás</button>
+            <input placeholder="Add meg a mennyiséget..." type="number" ng-model="quantity" value="1" min="1">
+            <button ng-click="calculate()" class="calculate">Számítás</button>
             <button class="reset">Visszaállítás</button>
-            <div id="warning">
+            <div id="warning" style="display:none;">
                 Válasszon egy gyümölcsöt a lenyíló listából!
             </div>
             <div class="infos">
                 <div class="info info_fat">
                     <p>Zsír</p>
+                    <p>{{calculatedFat.toFixed(1)}} g</p>
                 </div>
                 <div class="info info_fiber">
                     <p>Rost</p>
+                    <p>{{calculatedFiber.toFixed(1)}} g</p>
                 </div>
                 <div class="info info_calory">
                     <p>Kalória</p>
+                    <p>{{calculatedCalory.toFixed(1)}} kcal</p>
                 </div>
                 <div class="info info_protein">
                     <p>Fehérje</p>
+                    <p>{{calculatedProtein.toFixed(1)}} g</p>
                 </div>
                 <div class="info info_carbohydrate">
                     <p>Szénhidrát</p>
+                    <p>{{calculatedCarbohydrate.toFixed(1)}} g</p>
                 </div>
             </div>
         </div>
